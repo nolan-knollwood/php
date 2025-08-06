@@ -16,10 +16,12 @@ services:
       - ./app:/var/www/html
     environment:
       MYSQL_HOST: db
-      MYSQL_DATABASE: $MYSQL_DATABASE
-      MYSQL_USER: $MYSQL_USER
-      MYSQL_PASSWORD: $MYSQL_PASSWORD
-      MYSQL_PORT: $MYSQL_PORT
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_PORT: ${MYSQL_PORT}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
 
   #mysql
   db:
@@ -48,6 +50,8 @@ services:
       - db
         
   #redis
+  cache:
+    image: redis:latest
 
 volumes:
   mysqldata:
